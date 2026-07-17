@@ -37,6 +37,7 @@ variable "api_key" {
   description = "(Required) API key for web app to talk to SaaS platform."
 }
 
+/*
 variable "public_subnets" {
   type        = list(string)
   description = "(Required) List of subnet IDs for EC2 instance deployments."
@@ -46,6 +47,7 @@ variable "vpc_id" {
   type        = string
   description = "(Required) VPC ID of VPC for application deployment."
 }
+*/
 
 variable "tfe_organization" {
   type        = string
