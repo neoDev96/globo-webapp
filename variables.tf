@@ -47,4 +47,14 @@ variable "vpc_id" {
   description = "(Required) VPC ID of VPC for application deployment."
 }
 
+variable "tfe_organization" {
+  type        = string
+  description = "(Required) Name of TFC organization."
+}
+
+variable "tfe_workspace_name" {
+  type        = string
+  description = "(Required) name of networking workspace to get information."
+}
+
 
