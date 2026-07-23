@@ -49,6 +49,34 @@ resource "aws_instance" "main" {
   })
 }
 
+resource "terraform_data" "webapp" {
+
+  triggers_replace = [
+    length(aws_instance.main.*.id),
+    join(",", aws_instance.main.*.id)
+  ]
+
+
+  provisioner "file" {
+    content = templatefile("./templates/application.config.tpl", {
+      hosts     = aws_instance.main.*.private_dns
+      site_name = "${local.name_prefix}-taco-wagon"
+      api_key   = var.api_key
+    })
+    destination = "/home/ec2-user/application.config"
+  }
+
+  connection {
+    type        = "ssh"
+    user        = "ec2-user"
+    port        = "22"
+    host        = aws_instance.main[0].public_ip
+    private_key = module.ssh_keys.private_key_openssh
+  }
+
+}
+
+/*
 resource "null_resource" "webapp" {
 
   triggers = {
@@ -74,6 +102,7 @@ resource "null_resource" "webapp" {
   }
 
 }
+*/
 
 resource "aws_lb" "main" {
   name               = "${local.name_prefix}-webapp"
