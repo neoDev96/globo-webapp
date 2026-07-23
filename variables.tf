@@ -43,18 +43,6 @@ variable "playbook_repository" {
   description = "(Required) URI of Ansible playbook"
 }
 
-/*
-variable "public_subnets" {
-  type        = list(string)
-  description = "(Required) List of subnet IDs for EC2 instance deployments."
-}
-
-variable "vpc_id" {
-  type        = string
-  description = "(Required) VPC ID of VPC for application deployment."
-}
-*/
-
 variable "tfe_organization" {
   type        = string
   description = "(Required) Name of TFC organization."
