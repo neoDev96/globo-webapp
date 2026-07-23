@@ -43,6 +43,7 @@ variable "playbook_repository" {
   description = "(Required) URI of Ansible playbook"
 }
 
+
 variable "tfe_organization" {
   type        = string
   description = "(Required) Name of TFC organization."
